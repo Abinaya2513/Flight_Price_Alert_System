@@ -61,5 +61,3 @@ SQL_TABLE_NAME="TableName"
 **Running the Server**
 `node index.js`
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
