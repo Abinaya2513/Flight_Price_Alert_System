@@ -26,6 +26,7 @@ Clone the repository.
 Install dependencies using:
 
 cd kafkafabric
+
 npm install
 
 **Setup & Requirements**
