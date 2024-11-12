@@ -25,9 +25,9 @@ The system saves both time and money by doing the tedious work of price tracking
 Clone the repository.
 Install dependencies using:
 
-cd kafkafabric
-
+```cd kafkafabric
 npm install
+```
 
 **Setup & Requirements**
 
@@ -44,16 +44,19 @@ KAFKA_CLIENT_ID='my-app'
 KAFKA_SASL_MECHANISM='plain'
 KAFKA_SASL_USERNAME='$ConnectionString'
 KAFKA_SASL_PASSWORD='your-KAFKA_SASL_PASSWORD'
-KAFKA_TOPIC='your-KAFKA_TOPIC' ```
+KAFKA_TOPIC='your-KAFKA_TOPIC'
+```
+
 
 **SQL Server Configuration**
 
-SQL_SERVER_HOST='YourSqlserverName'
+```SQL_SERVER_HOST='YourSqlserverName'
 SQL_SERVER_USER='YourSqlUsername'
 SQL_SERVER_PASSWORD='Yourpassword'
 SQL_SERVER_DATABASE='DataBaseName'
 SQL_SERVER_PORT=1433
 SQL_TABLE_NAME="TableName"
+```
 
 **Running the Server**
 node index.js
