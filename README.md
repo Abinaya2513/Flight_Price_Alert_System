@@ -1,4 +1,4 @@
-##**Petsitting website**
+**Petsitting website**
 Inspiration
 Our pets need the utmost care when we go on vacation or have a long business schedule that requires us to be out of the house for some days. If relatives or neighbors are not available and pet homes have cages that many pets are not used to, we need pet sitters to care for the pets in a good environment.
 
@@ -15,10 +15,8 @@ Microsoft Fabric Reporting: Streams data to Microsoft Fabric for visualization a
 Installation
 Clone the repository.
 Install dependencies using:
-cd frontend
-npm install
 
-cd backend
+cd kafkafabric
 npm install
 Project Structure
 /api/send-complaint This endpoint: Sends Messages to OpenAI: Detects offensive content within user-submitted messages. Event Hub Streaming: Sends flagged messages to an Event Hub stream, which forwards the data to Microsoft Fabric. Additional Content Checks: If offensive content is detected, it retrieves other messages associated with the user for further analysis. Stream to Fabric: Sends final offensive results to Microsoft Fabric for reporting and analytics.
@@ -40,17 +38,29 @@ Data Flow & Reporting User Submits Complaint or Images: A user complaint trigger
 The information sent to Microsoft Fabric will diplay flagged terms, similarity scores, and images, creating a comprehensive dashboard for monitoring platform compliance and user interactions.
 
 Setup & Requirements
-Azure OpenAI API Key: Ensure you have access to Azure OpenAI for offensive content and similarity analysis. Event Hubs Connection Strings: Configure connection strings for Event Hub integration. Microsoft Fabric Account: For dashboard access, set up a Fabric account and datasets.
+Install the latest version of node js
 
 Environmental Variables
 Configure sensitive information such as:
 
-API_KEY="Your_OpenAI_API_Key"
-EVENT_HUB_CONNECTION_STRING="Your_Event_Hub_Connection_String"
-FABRIC_DATASET_KEY="Your_Microsoft_Fabric_Dataset_Key"
+# Kafka Configuration
+KAFKA_BROKER='your-KAFKA_BROKER'
+KAFKA_CLIENT_ID='my-app'
+KAFKA_SASL_MECHANISM='plain'
+KAFKA_SASL_USERNAME='$ConnectionString'
+KAFKA_SASL_PASSWORD='your-KAFKA_SASL_PASSWORD'
+KAFKA_TOPIC='your-KAFKA_TOPIC'
+
+# SQL Server Configuration
+SQL_SERVER_HOST='YourSqlserverName'
+SQL_SERVER_USER='YourSqlUsername'
+SQL_SERVER_PASSWORD='Yourpassword'
+SQL_SERVER_DATABASE='DataBaseName'
+SQL_SERVER_PORT=1433
+SQL_TABLE_NAME="TableName"
+
 Running the Server
-node Server.js
-Running the WebSite
-npm start
+node index.js
+
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
