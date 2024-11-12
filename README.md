@@ -39,8 +39,8 @@ Configure sensitive information such as:
 
 **Kafka Configuration**
 
-KAFKA_BROKER='your-KAFKA_BROKER'
-KAFKA_CLIENT_ID='my-app'
+- KAFKA_BROKER='your-KAFKA_BROKER'
+- KAFKA_CLIENT_ID='my-app'
 KAFKA_SASL_MECHANISM='plain'
 KAFKA_SASL_USERNAME='$ConnectionString'
 KAFKA_SASL_PASSWORD='your-KAFKA_SASL_PASSWORD'
