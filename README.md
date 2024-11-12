@@ -33,18 +33,18 @@ npm install
 
 Install the latest version of node js
 
-#Environmental Variables
+## Environmental Variables
 
 Configure sensitive information such as:
 
 **Kafka Configuration**
 
-`KAFKA_BROKER='your-KAFKA_BROKER'
+```KAFKA_BROKER='your-KAFKA_BROKER'
 KAFKA_CLIENT_ID='my-app'
 KAFKA_SASL_MECHANISM='plain'
 KAFKA_SASL_USERNAME='$ConnectionString'
 KAFKA_SASL_PASSWORD='your-KAFKA_SASL_PASSWORD'
-KAFKA_TOPIC='your-KAFKA_TOPIC'`
+KAFKA_TOPIC='your-KAFKA_TOPIC' ```
 
 **SQL Server Configuration**
 
