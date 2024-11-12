@@ -1,49 +1,43 @@
-**Petsitting website**
-Inspiration
-Our pets need the utmost care when we go on vacation or have a long business schedule that requires us to be out of the house for some days. If relatives or neighbors are not available and pet homes have cages that many pets are not used to, we need pet sitters to care for the pets in a good environment.
+#Flight Price Alert System Using Real Time Intelligence
 
-Mission
-We provide a medium for pet owners and sitters to communicate and provide pet sitting services. Our in website messaging will help pet owners and sitters communicate. All users should provide images of available pet foods and proof of pets being taken care of before an arrangement in order to ensure trust.
+#Inspiration
 
-Website is designed to enhance the safety and reliability of a pet-sitting service platform by incorporating offensive content detection, image similarity analysis, and data reporting. The backend integrates Azure OpenAI, Azure Event Hubs, and Microsoft Fabric to automate the analysis of user messages and images and generate visual reports based on detected issues. The reports are accessible via Microsoft Fabric, which provides a dashboard view of potentially harmful content and similarity analysis results.
+It began with the thrill of planning a dream trip—only for ticket prices to shift by the time you’re ready to book. It’s like chasing a moving target, with prices changing every time you check. This sparked the idea for a solution that quietly tracks fares in the background, allowing travelers to relax and let the system do the work.
 
-Key Features
-OpenAI Offensive Content Check: Uses OpenAI's GPT model to identify offensive language in user messages.
-Image Similarity Analysis using Azure cognitive services : Detects the similarity between uploaded images to check for potential duplicates or related images.
-Event Hub Integration: Sends offensive content analysis and image similarity results to Azure Event Hubs. Within the Azure portal, Event Hub’s Monitor section can show event flow, providing insights into data volume and latency.
-Microsoft Fabric Reporting: Streams data to Microsoft Fabric for visualization and reporting, allowing administrators to monitor flagged content and similarity results.
-Installation
+The project’s vision is to simplify travel planning, putting more focus on the journey itself rather than the price hunt. With this system, users receive timely alerts when a good deal appears, making it easier to catch spontaneous adventures and travel on a budget.
+
+#Mission
+
+This system continuously monitors flight ticket prices on users' chosen routes, tracking fluctuations to identify the best times to book. Instead of requiring travelers to manually check and recheck fares, it works quietly in the background, gathering data and analyzing patterns in ticket pricing. When a favorable fare appears—whether it's a drop below a certain threshold or a rare deal—users receive instant alerts, allowing them to act quickly and secure tickets at the best price.
+
+The system saves both time and money by doing the tedious work of price tracking and letting users know exactly when to book. Designed to ease the travel planning process, it allows users to set preferences, like specific routes and budget limits, so they only get alerts for deals that match their needs. By making airfare more accessible and affordable, this system turns the often unpredictable process of booking flights into a reliable and hassle-free experience.
+
+#Key Features
+
+1. Real-Time Price Monitoring: Continuously tracks flight price changes across multiple sources, ensuring that users are alerted to price fluctuations as soon as they occur.
+
+2. Scalable Data Processing: Utilizes Apache Kafka for efficient real-time data streaming, handling large volumes of flight price data from diverse sources without delay.
+
+3. Automated Alerts: Leverages Microsoft Fabric’s real-time intelligence to detect significant price hikes or drops and triggers timely notifications to keep users informed of the best booking opportunities.
+
+#Installation
+
 Clone the repository.
 Install dependencies using:
 
 cd kafkafabric
 npm install
-Project Structure
-/api/send-complaint This endpoint: Sends Messages to OpenAI: Detects offensive content within user-submitted messages. Event Hub Streaming: Sends flagged messages to an Event Hub stream, which forwards the data to Microsoft Fabric. Additional Content Checks: If offensive content is detected, it retrieves other messages associated with the user for further analysis. Stream to Fabric: Sends final offensive results to Microsoft Fabric for reporting and analytics.
 
-/contact Handles user inquiries, sending an email through a configured SMTP service. It does not involve analysis or Event Hub streaming.
+**Setup & Requirements**
 
-/petsitter and /owner These endpoints: Image Upload & Processing: Uploads single or multiple images to Cloudinary for storage. Image Similarity Analysis: Compares uploaded images, using Azure AI, to calculate similarity scores. Results above 50% similarity but below 100% are flagged for further analysis. Event Hub & Microsoft Fabric Integration: Streams the similarity results to Microsoft Fabric, where administrators can monitor image similarity reports for compliance. openAiPredictiveAnalysis A helper function that:
-
-Uses OpenAI to perform additional predictive analysis on image similarity scores, providing insights on whether similar images are of the same individual or related items. The results are saved in MongoDB for each user, associating the analysis results with the user’s data. Microsoft Fabric & Event Hubs Integration The code uses Azure Event Hubs as a data streaming intermediary to send analyzed data to Microsoft Fabric. Event Hub captures the streaming data (offensive message flags, similarity analysis results) and sends it to a Microsoft Fabric dataset. The setup allows for real-time data integration, making it possible to view up-to-date information and flagged results within Fabric's reporting dashboard.
-
-Data Flow & Reporting User Submits Complaint or Images: A user complaint triggers an offensive content check, while image uploads trigger a similarity analysis. Data Sent to Event Hubs: Offensive message content or similarity results are packaged as JSON and sent to Azure Event Hubs. Streaming to Fabric: Event Hubs routes the JSON data to Fabric, where it is visualized for real-time monitoring. Fabric Dashboard: Provides insights based on offensive content and image similarity checks, enabling administrators to proactively manage content. Example Event Hub Data Structure:
-
-{
-  "email": "user@example.com",
-  "message": "Flagged message content",
-  "offensiveContent": "Detected offensive terms",
-  "timestamp": "2023-12-10T10:00:00Z"
-}
-The information sent to Microsoft Fabric will diplay flagged terms, similarity scores, and images, creating a comprehensive dashboard for monitoring platform compliance and user interactions.
-
-Setup & Requirements
 Install the latest version of node js
 
-Environmental Variables
+#Environmental Variables
+
 Configure sensitive information such as:
 
-# Kafka Configuration
+**Kafka Configuration**
+
 KAFKA_BROKER='your-KAFKA_BROKER'
 KAFKA_CLIENT_ID='my-app'
 KAFKA_SASL_MECHANISM='plain'
@@ -51,7 +45,8 @@ KAFKA_SASL_USERNAME='$ConnectionString'
 KAFKA_SASL_PASSWORD='your-KAFKA_SASL_PASSWORD'
 KAFKA_TOPIC='your-KAFKA_TOPIC'
 
-# SQL Server Configuration
+**SQL Server Configuration**
+
 SQL_SERVER_HOST='YourSqlserverName'
 SQL_SERVER_USER='YourSqlUsername'
 SQL_SERVER_PASSWORD='Yourpassword'
