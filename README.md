@@ -1,6 +1,6 @@
 # Flight Price Alert System Using Real Time Intelligence
 
-#Inspiration
+## Inspiration
 
 It began with the thrill of planning a dream trip—only for ticket prices to shift by the time you’re ready to book. It’s like chasing a moving target, with prices changing every time you check. This sparked the idea for a solution that quietly tracks fares in the background, allowing travelers to relax and let the system do the work.
 
